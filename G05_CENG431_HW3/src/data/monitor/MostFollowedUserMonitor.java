@@ -1,10 +1,10 @@
-package tr.edu.iztech.orp.data.monitor;
+package data.monitor;
 
 import java.util.List;
 
-import tr.edu.iztech.orp.enums.UserEvent;
-import tr.edu.iztech.orp.models.IRepository;
-import tr.edu.iztech.orp.models.User;
+import model.enums.UserEvent;
+import model.models.user.User;
+import model.utils.IRepository;
 
 /**
  * Monitors all users to find most followed user

@@ -1,10 +1,12 @@
-package tr.edu.iztech.orp.data;
+package data;
 
 import java.io.File;
 import java.util.List;
 
-import tr.edu.iztech.orp.models.User;
 import org.w3c.dom.*;
+
+import model.models.user.User;
+
 import javax.xml.parsers.*;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;

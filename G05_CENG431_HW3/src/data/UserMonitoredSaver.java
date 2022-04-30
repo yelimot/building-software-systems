@@ -1,12 +1,14 @@
-package tr.edu.iztech.orp.data;
+package data;
 
 import java.util.stream.Stream;
 
-import tr.edu.iztech.orp.enums.OutfitCollectionEvent;
-import tr.edu.iztech.orp.enums.UserEvent;
-import tr.edu.iztech.orp.models.IRepository;
-import tr.edu.iztech.orp.models.OutfitCollection;
-import tr.edu.iztech.orp.models.User;
+import model.enums.PlaylistEvent;
+import model.enums.UserEvent;
+import model.models.playlist.Playlist;
+import model.models.user.User;
+import model.utils.IRepository;
+
+
 
 public class UserMonitoredSaver implements IDataMonitoredSaver<User, UserEvent> {
 	private final IRepository<User> userRepo;
@@ -36,13 +38,13 @@ public class UserMonitoredSaver implements IDataMonitoredSaver<User, UserEvent> 
 		Stream.of(UserEvent.values()).forEach(e -> user.subscribe(e, this));
 	}
 	
-	private void subscribeToAllEvents(OutfitCollection outfitCollection) {
-		Stream.of(OutfitCollectionEvent.values()).forEach(e -> outfitCollection.subscribe(e, userCollectionMonitoredSaver));
+	private void subscribeToAllEvents(Playlist playlist) {
+		Stream.of(PlaylistEvent.values()).forEach(e -> playlist.subscribe(e, userCollectionMonitoredSaver));
 	}
 	
-	private IDataMonitoredSaver<OutfitCollection, OutfitCollectionEvent> userCollectionMonitoredSaver = new IDataMonitoredSaver<>() {
+	private IDataMonitoredSaver<Playlist, PlaylistEvent> userCollectionMonitoredSaver = new IDataMonitoredSaver<>() {
 		@Override
-		public void update(OutfitCollectionEvent event) {
+		public void update(PlaylistEvent event) {
 			userRepo.save();
 		}
 	};

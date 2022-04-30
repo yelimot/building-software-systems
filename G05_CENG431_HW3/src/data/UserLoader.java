@@ -1,4 +1,4 @@
-package tr.edu.iztech.orp.data;
+package data;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,22 +11,23 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import tr.edu.iztech.orp.models.IRepository;
-import tr.edu.iztech.orp.models.Outfit;
-import tr.edu.iztech.orp.models.OutfitCollection;
-import tr.edu.iztech.orp.models.User;
+import model.models.playlist.Playlist;
+import model.models.song.Song;
+import model.models.user.User;
+import model.utils.IRepository;
+
 
 public class UserLoader implements IDataLoader<User> {
 	private final File file;
-	private final IRepository<Outfit> outfitRepository;
+	private final IRepository<Song> songRepository;
 	
-	public UserLoader(String pathname, IRepository<Outfit> outfitRepository) {
-		this(new File(pathname), outfitRepository);
+	public UserLoader(String pathname, IRepository<Song> songRepository) {
+		this(new File(pathname), songRepository);
 	}
 	
-	public UserLoader(File file, IRepository<Outfit> outfitRepository) {
+	public UserLoader(File file, IRepository<Song> songRepository) {
 		this.file = file;
-		this.outfitRepository = outfitRepository;
+		this.songRepository = songRepository;
 	}
 	
 	@Override
@@ -59,12 +60,12 @@ public class UserLoader implements IDataLoader<User> {
                     Element cElement = (Element) collectionNode;
                     String name = cElement.getElementsByTagName("name").item(0).getTextContent();
                     
-                    OutfitCollection tempCollection = new OutfitCollection(name);
+                    Playlist tempCollection = new Playlist(name);
                     
-        			NodeList outfitList = cElement.getElementsByTagName("id");
-        			for(int k = 0; k < outfitList.getLength(); ++k) {
-        				String outfitId = outfitList.item(k).getTextContent();
-        				tempCollection.add(outfitRepository.get(Integer.valueOf(outfitId)).get());
+        			NodeList songList = cElement.getElementsByTagName("id");
+        			for(int k = 0; k < songList.getLength(); ++k) {
+        				String songId = songList.item(k).getTextContent();
+        				tempCollection.add(songRepository.get(Integer.valueOf(songId)).get());
         			}
         			tempUser.addCollection(tempCollection);
     			}

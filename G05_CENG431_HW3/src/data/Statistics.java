@@ -1,28 +1,58 @@
 package data;
 
+import data.monitor.IMonitor;
+import data.monitor.MostFollowedUserMonitor;
+import data.monitor.MostLikedSongMonitor;
+import model.enums.PlaylistEvent;
+import model.enums.SongEvent;
+import model.enums.UserEvent;
+import model.models.playlist.Playlist;
+import model.models.song.Song;
+import model.models.user.User;
+import model.utils.IRepository;
+
 public class Statistics implements IStatistics {
-	private IMonitor<Outfit, OutfitEvent> mostLikedOutfitMonitor;
-	private IMonitor<Outfit, OutfitEvent>  mostDislikedOutfitMonitor;
+	private IMonitor<Song, SongEvent> mostLikedSongMonitor;
 	private IMonitor<User, UserEvent>  mostFollowedUserMonitor;
+	private IMonitor<Song, SongEvent> mostPopularSongMonitor;
+	private IMonitor<Playlist, PlaylistEvent> shortestPlaylistMonitor;
+	private IMonitor<Playlist, PlaylistEvent> longestPlaylistMonitor;
 	
-	public Statistics(IRepository<User> usersRepo, IRepository<Outfit> outfitsRepo) {
-		mostLikedOutfitMonitor = new MostLikedOutfitMonitor(outfitsRepo);
-		mostDislikedOutfitMonitor = new MostDislikedOutfitMonitor(outfitsRepo);
+	public Statistics(IRepository<User> usersRepo, IRepository<Song> songsRepo, 
+			IRepository<Playlist> playlistsRepo) {
+		mostLikedSongMonitor = new MostLikedSongMonitor(songsRepo);
 		mostFollowedUserMonitor = new MostFollowedUserMonitor(usersRepo);
+		mostPopularSongMonitor = new MostPopularSongMonitor(songsRepo);
+		shortestPlaylistMonitor = new ShortestPlaylistMonitor(playlistsRepo);
+		longestPlaylistMonitor = new LongestPlaylistMonitor(playlistsRepo);
 	}
 	
 	@Override
-	public Outfit getMostLikedOutfit() {
-		return mostLikedOutfitMonitor.get();
+	public Song getMostLikedSong() {
+		return mostLikedSongMonitor.get();
 	}
 
-	@Override
-	public Outfit getMostDislikedOutfit() {
-		return mostDislikedOutfitMonitor.get();
-	}
 
 	@Override
 	public User getMostFollowedUser() {
 		return mostFollowedUserMonitor.get();
+	}
+
+	@Override
+	public Song getMostPopularSong() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Playlist getShortestPlaylist() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Playlist getLongestPlaylist() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

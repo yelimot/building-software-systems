@@ -29,48 +29,43 @@ public class SongLoader implements IDataLoader<Song> {
 		JSONTokener tokener = new JSONTokener(is);
         JSONArray object = new JSONArray(tokener);
         
-		List<Outfit> outfits = new ArrayList<>();
+		List<Song> songs = new ArrayList<>();
 
 		for(Object obj: object) {
 			JSONObject jsonField = (JSONObject) obj;
 			
-			int outfitId = jsonField.getInt("outfit_id");
+			int songId = jsonField.getInt("song_id");
 			String name = jsonField.getString("name");
 			String brandName = jsonField.getString("brand_name");
 
-			OutfitGender gender = OutfitGender.valueOf(jsonField.getString("gender"));
-			OutfitType type = OutfitType.valueOf(jsonField.getString("type"));
-			OutfitOccasion occasion = OutfitOccasion.valueOf(jsonField.getString("occasion"));
-			OutfitColor color = OutfitColor.valueOf(jsonField.getString("color"));
+			SongGender gender = SongGender.valueOf(jsonField.getString("gender"));
+			SongType type = SongType.valueOf(jsonField.getString("type"));
+			SongOccasion occasion = SongOccasion.valueOf(jsonField.getString("occasion"));
+			SongColor color = SongColor.valueOf(jsonField.getString("color"));
 			
 			JSONArray sizeJsonArray = jsonField.getJSONArray("available_sizes");
-			List<OutfitSize> sizes = new LinkedList<>();
+			List<SongSize> sizes = new LinkedList<>();
 			for(Object size: sizeJsonArray) {
-				sizes.add(OutfitSize.valueOf(size.toString()));
+				sizes.add(SongSize.valueOf(size.toString()));
 			}
-			Outfit outfit = new Outfit(outfitId, name, brandName, gender, type, occasion, color, sizes.toArray(OutfitSize[]::new));
+			Song song = new Song(songId, name, brandName, gender, type, occasion, color, sizes.toArray(SongSize[]::new));
 
 			JSONArray commentJsonArray = jsonField.getJSONArray("comments");
 			for(Object commentObject: commentJsonArray) {
 				JSONObject comment = (JSONObject) commentObject;
 				String authorId = comment.getString("author");
 				String message = comment.getString("text");
-				outfit.addComment(new Comment(authorId, message));
+				song.addComment(new Comment(authorId, message));
 			}
 			
 			JSONArray likedJsonArray = jsonField.getJSONArray("liked_users");
 			for(Object user: likedJsonArray) {
-				outfit.addLike(user.toString());
-			}
-			
-			JSONArray dislikedJsonArray = jsonField.getJSONArray("disliked_users");
-			for(Object user: dislikedJsonArray) {
-				outfit.addDislike(user.toString());
+				song.addLike(user.toString());
 			}
 
-			outfits.add(outfit);
+			songs.add(song);
 		}
 
-		return outfits;
+		return songs;
 	}
 }

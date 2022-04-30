@@ -14,12 +14,12 @@ import model.models.user.User;
 import model.utils.IObserver;
 
 /**
- * Shows playlist's of user.
+ * Shoes all collections of user.
  */
 public class ListOfPlaylistsPanel extends JPanel implements IObserver<User, UserEvent> {
 	private static final long serialVersionUID = -669293105768399715L;
 	private JScrollPane usersScroller;
-	private JList<Object> playlists;
+	private JList<Object> collections;
 	private User model;
 	
 	public ListOfPlaylistsPanel(User model) {
@@ -35,11 +35,11 @@ public class ListOfPlaylistsPanel extends JPanel implements IObserver<User, User
         usersScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(usersScroller);
 
-        playlists = new JList<Object>(model.getCollections().toArray());
-        playlists.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        playlists.setVisibleRowCount(-1);
+        collections = new JList<Object>(model.getCollections().toArray());
+        collections.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        collections.setVisibleRowCount(-1);
         
-        usersScroller.setViewportView(playlists);
+        usersScroller.setViewportView(collections);
         
         JLabel usersTitle = new JLabel("Collections");
         usersTitle.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -49,8 +49,8 @@ public class ListOfPlaylistsPanel extends JPanel implements IObserver<User, User
 	}
 	
 	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
-        playlists.addListSelectionListener(collectionChangeListener);
-        playlists.setSelectedIndex(0);
+        collections.addListSelectionListener(collectionChangeListener);
+        collections.setSelectedIndex(0);
 	}
 	
 	@Override
@@ -58,11 +58,10 @@ public class ListOfPlaylistsPanel extends JPanel implements IObserver<User, User
 		switch (event) {
 			case ADD_COLLECTION:
 			case REMOVE_COLLECTION:
-				playlists.removeAll();
-				playlists.setListData(model.getCollections().toArray());
+				collections.removeAll();
+				collections.setListData(model.getCollections().toArray());
 			default:
 				break;
 		}		
 	}
 }
-

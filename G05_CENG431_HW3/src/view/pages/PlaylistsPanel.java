@@ -8,7 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
+import model.models.user.User;
 import view.components.ListOfPlaylistsPanel;
+import view.components.SongListPanel;
 
 /**
  * Shows current user's playlists and its content.
@@ -23,23 +25,23 @@ import view.components.ListOfPlaylistsPanel;
  * - PlaylistListPanel
  * - OutfitCollectionListPanel
  */
-public class CollectionsPanel extends JPanel {
+public class PlaylistsPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	
 	private JTextField collectionNameField;
 	private ListOfPlaylistsPanel playlistsList;
-	private OutfitCollectionListPanel outfitList;
+	private SongListPanel songList;
 	private JButton createCollectionButton;
 	private JButton removeItemButton;
 
-	public CollectionsPanel(User model) {
+	public PlaylistsPanel(User model) {
         setSize(960, 685);
         setLayout(null);
         setVisible(true);
         
-        collectionsList = new CollectionListPanel(model);
-        collectionsList.setBounds(20, 20, 420, 540);
-        add(collectionsList);
+        playlistsList = new ListOfPlaylistsPanel(model);
+        playlistsList.setBounds(20, 20, 420, 540);
+        add(playlistsList);
 		
         collectionNameField = new JTextField();
         collectionNameField.setBounds(20, 570, 300, 30);
@@ -55,21 +57,21 @@ public class CollectionsPanel extends JPanel {
         add(removeItemButton);
 	}
 	
-	public CollectionListPanel getCollectionListPanel() {
-		return collectionsList;
+	public ListOfPlaylistsPanel getCollectionListPanel() {
+		return playlistsList;
 	}
 	
-	public String getNewOutfitCollectionName() {
+	public String getNewPlaylistName() {
 		return collectionNameField.getText();
 	}
 
-	public void setOutfitListPanel(OutfitCollectionListPanel outfitList) {
-		if (this.outfitList != null) remove(this.outfitList);
+	public void setOutfitListPanel(SongListPanel songList) {
+		if (this.songList != null) remove(this.songList);
 
-		if (outfitList != null){
-			this.outfitList = outfitList;
-			this.outfitList.setBounds(560, 20, 300, 540);
-	        add(this.outfitList);
+		if (songList != null){
+			this.songList = songList;
+			this.songList.setBounds(560, 20, 300, 540);
+	        add(this.songList);
 		}
 		
 		repaint();
@@ -81,7 +83,7 @@ public class CollectionsPanel extends JPanel {
 	}
 	
 	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
-		collectionsList.addListSelectionListener(collectionChangeListener);
+		playlistsList.addListSelectionListener(collectionChangeListener);
 	}
 	
 	public void addCreateButtonListener(ActionListener createButtonListener) {

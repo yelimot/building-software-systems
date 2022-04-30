@@ -1,19 +1,19 @@
 package view.components;
 
-import model.enums.SongCollection;
 import model.enums.PlaylistEvent;
+import model.models.playlist.Playlist;
 import model.models.song.AbstractSongContainer;
 
 /**
- * Shows all songs of collection in list.
+ * Shows all songs of playlist in list.
  * 
- * Behaviour:
+ * Behavior:
  * - updated when song added/removed.
  */
-public class SongCollectionListPanel extends AbstractSongListPanel<SongCollection, PlaylistEvent> {
+public class SongListPanel extends AbstractSongListPanel<Playlist, PlaylistEvent> {
 	private static final long serialVersionUID = -9135208168535913299L;
 
-	public SongCollectionListPanel(AbstractSongContainer<SongCollection, PlaylistEvent> model) {
+	public SongListPanel(AbstractSongContainer<Playlist, PlaylistEvent> model) {
 		super(model);
 	}
 
