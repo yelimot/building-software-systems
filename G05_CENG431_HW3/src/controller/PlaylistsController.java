@@ -7,23 +7,23 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import model.enums.PlaylistEvent;
 import model.models.playlist.Playlist;
+import model.models.playlist.PlaylistEvent;
 import model.models.song.Song;
 import model.models.user.User;
 import model.utils.StringUtils;
-import view.components.SongListPanel;
+import view.components.PlaylistPanel;
 import view.pages.PlaylistsPanel;
 
 
-public class PlaylistController implements IController {
+public class PlaylistsController implements IController {
 	private PlaylistsPanel view;
 	private User model;
 	private PlaylistListController playlistListController;
-	private SongListPanel songListPanel;
+	private PlaylistPanel playlistPanel;
 	private Playlist selectedPlaylist;
 	
-	public PlaylistController(PlaylistsPanel view, User model) {
+	public PlaylistsController(PlaylistsPanel view, User model) {
 		this.model = model;
 		this.view = view;
 		
@@ -46,7 +46,7 @@ public class PlaylistController implements IController {
 	private ActionListener removeItemButtonListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			Song selected = songListPanel.getSelection();
+			Song selected = playlistPanel.getSelection();
 			if (selected != null) {
 				selectedPlaylist.remove(selected);
 			}
@@ -58,22 +58,22 @@ public class PlaylistController implements IController {
     	public void valueChanged(ListSelectionEvent event) {
     		if (!event.getValueIsAdjusting()) {
     			if (selectedPlaylist != null) {
-        			selectedPlaylist.unsubscribe(PlaylistEvent.ADD_SONG, songListPanel);
-        			selectedPlaylist.unsubscribe(PlaylistEvent.REMOVE_SONG, songListPanel);	
+        			selectedPlaylist.unsubscribe(PlaylistEvent.ADD_SONG, playlistPanel);
+        			selectedPlaylist.unsubscribe(PlaylistEvent.REMOVE_SONG, playlistPanel);	
     			}
 
 				Playlist model = ((JList<Playlist>)event.getSource()).getSelectedValue();    		
 				
     			if (model != null) {
-    				songListPanel = new SongListPanel(model);
+    				playlistPanel = new PlaylistPanel(model);
     				
-    				model.subscribe(PlaylistEvent.ADD_SONG, songListPanel);
-    				model.subscribe(PlaylistEvent.REMOVE_SONG, songListPanel);
+    				model.subscribe(PlaylistEvent.ADD_SONG, playlistPanel);
+    				model.subscribe(PlaylistEvent.REMOVE_SONG, playlistPanel);
 
-    				view.setOutfitListPanel(songListPanel);
+    				view.setSongListPanel(playlistPanel);
     				view.setVisibilityOfRemoveButton(true);
     			} else {
-    				view.setOutfitListPanel(null);
+    				view.setSongListPanel(null);
     				view.setVisibilityOfRemoveButton(false);
     			}
 				

@@ -13,9 +13,9 @@ public class MostFollowedUserMonitor implements IMonitor<User, UserEvent> {
 	private User mostFollowed;
 	
 	public MostFollowedUserMonitor(IRepository<User> usersRepo) {
-		List<User> outfits = usersRepo.getAll();
+		List<User> songs = usersRepo.getAll();
 		
-		outfits.forEach(o -> {
+		songs.forEach(o -> {
 			subscribeTo(o);
 			if (hasMoreFollower(o)) mostFollowed = o;
 		});

@@ -7,13 +7,13 @@ import javax.swing.event.ListSelectionListener;
 import model.models.song.Song;
 import model.models.song.SongRepository;
 import view.components.SongDetailPanel;
-import view.pages.Home;
+import view.pages.HomePanel;
 
 public class HomeController implements IController {
-	private final Home view;
+	private final HomePanel view;
 	private SongDetailController songDetailController;
 	
-	public HomeController(Home view, SongRepository model) {
+	public HomeController(HomePanel view, SongRepository model) {
 		this.view = view;
 		
 		this.view.addListSelectionListener(collectionChangeListener);
@@ -29,11 +29,11 @@ public class HomeController implements IController {
     			Song model = source.getSelectedValue();
     			
     			if (model != null) {
-        			SongDetailPanel outfitDetail = new SongDetailPanel(view, model);
-        			songDetailController = new SongDetailController(outfitDetail, model);
-        			view.setOutfitDetailPanel(outfitDetail);
+        			SongDetailPanel songDetail = new SongDetailPanel(view, model);
+        			songDetailController = new SongDetailController(songDetail, model);
+        			view.setSongDetailPanel(songDetail);
     			} else {
-        			view.setOutfitDetailPanel(null);
+        			view.setSongDetailPanel(null);
     			}
     		}
     	}

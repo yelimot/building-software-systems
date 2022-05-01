@@ -1,19 +1,20 @@
 package view.pages;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.JTextField;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
 import controller.LoginController;
 import model.exceptions.LoginFailException;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * Description:
@@ -23,7 +24,7 @@ import java.awt.event.MouseEvent;
  * - When user fills user name and password fields correctly, home page shows up.
  * - When user fills user name and password fields incorrectly or keep them empty, the error message shows up.
  */
-public class Login extends JPanel {
+public class LoginPanel extends JPanel {
 	private static final long serialVersionUID = 5232858854896059657L;
 	private final JLabel usernameLabel;
 	private final JPasswordField passwordInput;
@@ -31,7 +32,7 @@ public class Login extends JPanel {
 	private final JLabel messageLabel;
 	private final LoginController userController;
 
-	public Login(LoginController userController) {
+	public LoginPanel(LoginController userController) {
 		this.userController = userController;
 		
 		setLayout(null);
@@ -67,7 +68,7 @@ public class Login extends JPanel {
 		
 		ezUsernames1 = new JTextField();
 		ezUsernames1.setToolTipText("Click for set username input");
-		ezUsernames1.setText("cihangir");
+		ezUsernames1.setText("alp");
 		ezUsernames1.setEditable(false);
 		ezUsernames1.setBounds(158, 348, 114, 19);
 		add(ezUsernames1);
@@ -75,7 +76,7 @@ public class Login extends JPanel {
 		
 		ezUsernames2 = new JTextField();
 		ezUsernames2.setToolTipText("Click for set username input");
-		ezUsernames2.setText("polatlý");
+		ezUsernames2.setText("akdeniz");
 		ezUsernames2.setEditable(false);
 		ezUsernames2.setColumns(10);
 		ezUsernames2.setBounds(284, 348, 114, 19);
@@ -83,7 +84,7 @@ public class Login extends JPanel {
 		
 		ezUsernames3 = new JTextField();
 		ezUsernames3.setToolTipText("Click for set username input");
-		ezUsernames3.setText("bruno");
+		ezUsernames3.setText("johannes");
 		ezUsernames3.setEditable(false);
 		ezUsernames3.setColumns(10);
 		ezUsernames3.setBounds(410, 348, 114, 19);
@@ -91,7 +92,7 @@ public class Login extends JPanel {
 		
 		ezUsernames4 = new JTextField();
 		ezUsernames4.setToolTipText("Click for set username input");
-		ezUsernames4.setText("marmara");
+		ezUsernames4.setText("huseyin");
 		ezUsernames4.setEditable(false);
 		ezUsernames4.setColumns(10);
 		ezUsernames4.setBounds(537, 348, 114, 19);
@@ -99,7 +100,7 @@ public class Login extends JPanel {
 		
 		ezUsernames5 = new JTextField();
 		ezUsernames5.setToolTipText("Click for set username input");
-		ezUsernames5.setText("beckham");
+		ezUsernames5.setText("tennant");
 		ezUsernames5.setEditable(false);
 		ezUsernames5.setColumns(10);
 		ezUsernames5.setBounds(663, 348, 114, 19);

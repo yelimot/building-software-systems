@@ -1,14 +1,12 @@
 package data;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-import org.json.*;
-
+import model.enums.Genre;
 import model.models.song.Song;
 
 public class SongLoader implements IDataLoader<Song> {
@@ -19,49 +17,46 @@ public class SongLoader implements IDataLoader<Song> {
 	}
 	
 	@Override
-	public List<Song> load() {
-		InputStream is = null;
-		try {
-			is = new FileInputStream(path);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		JSONTokener tokener = new JSONTokener(is);
-        JSONArray object = new JSONArray(tokener);
+	public List<Song> load() throws NumberFormatException, IOException {
         
-		List<Song> songs = new ArrayList<>();
+		List<Song> songs = new ArrayList<>();		
+		
+		@SuppressWarnings("resource")
+		BufferedReader txtReader = new BufferedReader(new FileReader(path));
+	    String row;
+	    while ((row = txtReader.readLine()) != null) {
+	           String[] listOfAttributes = row.split(",");
+	           Genre genre = null;
+	           switch (listOfAttributes[0]) {
+	                case "1":
+	                    genre = Genre.Acoustic;
+	                    break;
+	                case "2":
+	                    genre = Genre.Instrumental;
+	                    break;
+	                case "3":
+	                    genre = Genre.Rock;
+	                    break;
+	                case "4":
+	                    genre = Genre.Hiphop;
+	                    break;
+	                case "5":
+	                    genre = Genre.Jazz;
+	                    break;
+	                case "6":
+	                    genre = Genre.Pop;
+	                    break;           
+	                default:
+	                    break;
+	           }
+	           int songId = Integer.valueOf(listOfAttributes[1]);
+	           String songName = listOfAttributes[2];
+	           String artistName = listOfAttributes[3];
+	           int duration = Integer.valueOf(listOfAttributes[4]);
+	           int popularity = Integer.valueOf(listOfAttributes[5]);
+	           int numberOfLikes = Integer.valueOf(listOfAttributes[6]);
 
-		for(Object obj: object) {
-			JSONObject jsonField = (JSONObject) obj;
-			
-			int songId = jsonField.getInt("song_id");
-			String name = jsonField.getString("name");
-			String brandName = jsonField.getString("brand_name");
-
-			SongGender gender = SongGender.valueOf(jsonField.getString("gender"));
-			SongType type = SongType.valueOf(jsonField.getString("type"));
-			SongOccasion occasion = SongOccasion.valueOf(jsonField.getString("occasion"));
-			SongColor color = SongColor.valueOf(jsonField.getString("color"));
-			
-			JSONArray sizeJsonArray = jsonField.getJSONArray("available_sizes");
-			List<SongSize> sizes = new LinkedList<>();
-			for(Object size: sizeJsonArray) {
-				sizes.add(SongSize.valueOf(size.toString()));
-			}
-			Song song = new Song(songId, name, brandName, gender, type, occasion, color, sizes.toArray(SongSize[]::new));
-
-			JSONArray commentJsonArray = jsonField.getJSONArray("comments");
-			for(Object commentObject: commentJsonArray) {
-				JSONObject comment = (JSONObject) commentObject;
-				String authorId = comment.getString("author");
-				String message = comment.getString("text");
-				song.addComment(new Comment(authorId, message));
-			}
-			
-			JSONArray likedJsonArray = jsonField.getJSONArray("liked_users");
-			for(Object user: likedJsonArray) {
-				song.addLike(user.toString());
-			}
+	           Song song = new Song(genre, songId, songName, artistName, duration, popularity, numberOfLikes);
 
 			songs.add(song);
 		}

@@ -2,9 +2,9 @@ package data;
 
 import java.util.stream.Stream;
 
-import model.enums.PlaylistEvent;
 import model.enums.UserEvent;
 import model.models.playlist.Playlist;
+import model.models.playlist.PlaylistEvent;
 import model.models.user.User;
 import model.utils.IRepository;
 

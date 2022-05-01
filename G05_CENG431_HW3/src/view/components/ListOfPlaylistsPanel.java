@@ -1,12 +1,13 @@
 package view.components;
 
+import java.awt.Font;
+
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.event.ListSelectionListener;
 
 import model.enums.UserEvent;

@@ -1,12 +1,13 @@
 package view.components;
 
+import java.awt.Font;
+
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.event.ListSelectionListener;
 
 import model.enums.UserEvent;
@@ -16,7 +17,7 @@ import model.utils.IObserver;
 /**
  * Shows all followed users in list.
  * 
- * Behaviour:
+ * Behavior:
  * - Updated whenever user follows/unfollows someone.
  */
 public class FollowedUsersListPanel extends JPanel implements IObserver<User, UserEvent> {

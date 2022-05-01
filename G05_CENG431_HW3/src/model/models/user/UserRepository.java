@@ -1,5 +1,6 @@
 package model.models.user;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class UserRepository extends AbstractObservable<UserRepository, UserRepos
 	private List<User> users;
 	private IDataSaver<User> dataSaver;
 	
-	public UserRepository(IDataLoader<User> dataLoader, IDataSaver<User> dataSaver) {
+	public UserRepository(IDataLoader<User> dataLoader, IDataSaver<User> dataSaver) throws NumberFormatException, IOException {
 		this.users = new LinkedList<>(dataLoader.load());
 		this.dataSaver = dataSaver;
 	}

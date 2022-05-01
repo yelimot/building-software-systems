@@ -9,7 +9,7 @@ import java.util.Arrays;
 public enum MenuModel {
 	LOGIN("private_Login"),
 	HOME("Home"),
-	COLLECTIONS("Playlists"),
+	COLLECTIONS("Collections"),
 	FOLLOWED_USERS("Followed Users"),
 	STATISTICS("Statistics");
 

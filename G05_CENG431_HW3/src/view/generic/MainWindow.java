@@ -1,15 +1,17 @@
 package view.generic;
 
-import javax.swing.JFrame;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import view.generic.contracts.IWindow;
 
 public class MainWindow extends JFrame implements IWindow {
 	private static final long serialVersionUID = -1913034844784098376L;
-	private static final String title = "IZTECH Outfit Rating Platform [Group 6]";
+	private static final String title = "IZTECH Spofity Application [Group 5]";
 	private JPanel contentPanel;
 	private JPanel headerPanel;
 

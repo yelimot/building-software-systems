@@ -1,36 +1,36 @@
 package view.pages;
 
-import javax.swing.JPanel;
-
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
 import model.models.user.User;
 import view.components.ListOfPlaylistsPanel;
-import view.components.SongListPanel;
+import view.components.PlaylistPanel;
 
 /**
- * Shows current user's playlists and its content.
+ * Shows current user's collections and its content.
  * 
  * Behaviour:
- * - Users selects playlist from left.
+ * - Users selects collection from left.
  * - Song list shows up at right.
  * - User removes song by selecting it and clicking remove button.
- * - User creates playlist by writing its name to input and clicking create button.
+ * - User creates collection by writing its name to input in lower 
+ * 	left and clicking Create button.
  * 
  * Children:
+ * - CollectionListPanel
  * - PlaylistListPanel
- * - OutfitCollectionListPanel
  */
 public class PlaylistsPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	
 	private JTextField collectionNameField;
-	private ListOfPlaylistsPanel playlistsList;
-	private SongListPanel songList;
+	private ListOfPlaylistsPanel collectionsList;
+	private PlaylistPanel playlist;
 	private JButton createCollectionButton;
 	private JButton removeItemButton;
 
@@ -39,9 +39,9 @@ public class PlaylistsPanel extends JPanel {
         setLayout(null);
         setVisible(true);
         
-        playlistsList = new ListOfPlaylistsPanel(model);
-        playlistsList.setBounds(20, 20, 420, 540);
-        add(playlistsList);
+        collectionsList = new ListOfPlaylistsPanel(model);
+        collectionsList.setBounds(20, 20, 420, 540);
+        add(collectionsList);
 		
         collectionNameField = new JTextField();
         collectionNameField.setBounds(20, 570, 300, 30);
@@ -58,20 +58,20 @@ public class PlaylistsPanel extends JPanel {
 	}
 	
 	public ListOfPlaylistsPanel getCollectionListPanel() {
-		return playlistsList;
+		return collectionsList;
 	}
 	
 	public String getNewPlaylistName() {
 		return collectionNameField.getText();
 	}
 
-	public void setOutfitListPanel(SongListPanel songList) {
-		if (this.songList != null) remove(this.songList);
+	public void setSongListPanel(PlaylistPanel playlist) {
+		if (this.playlist != null) remove(this.playlist);
 
-		if (songList != null){
-			this.songList = songList;
-			this.songList.setBounds(560, 20, 300, 540);
-	        add(this.songList);
+		if (playlist != null){
+			this.playlist = playlist;
+			this.playlist.setBounds(560, 20, 300, 540);
+	        add(this.playlist);
 		}
 		
 		repaint();
@@ -83,7 +83,7 @@ public class PlaylistsPanel extends JPanel {
 	}
 	
 	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
-		playlistsList.addListSelectionListener(collectionChangeListener);
+		collectionsList.addListSelectionListener(collectionChangeListener);
 	}
 	
 	public void addCreateButtonListener(ActionListener createButtonListener) {

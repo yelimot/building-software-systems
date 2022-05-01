@@ -7,13 +7,12 @@ import java.awt.event.ItemListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.models.user.User;
 import view.generic.MenuModel;
 import view.generic.contracts.IScreenManager;
-
-import javax.swing.JLabel;
 
 /**
  * Component that shows elements for navigation menu, logout button, username etc.

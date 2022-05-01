@@ -3,10 +3,11 @@ package data;
 import data.monitor.IMonitor;
 import data.monitor.MostFollowedUserMonitor;
 import data.monitor.MostLikedSongMonitor;
-import model.enums.PlaylistEvent;
+import data.monitor.MostPopularSongMonitor;
 import model.enums.SongEvent;
 import model.enums.UserEvent;
 import model.models.playlist.Playlist;
+import model.models.playlist.PlaylistEvent;
 import model.models.song.Song;
 import model.models.user.User;
 import model.utils.IRepository;
@@ -23,8 +24,8 @@ public class Statistics implements IStatistics {
 		mostLikedSongMonitor = new MostLikedSongMonitor(songsRepo);
 		mostFollowedUserMonitor = new MostFollowedUserMonitor(usersRepo);
 		mostPopularSongMonitor = new MostPopularSongMonitor(songsRepo);
-		shortestPlaylistMonitor = new ShortestPlaylistMonitor(playlistsRepo);
-		longestPlaylistMonitor = new LongestPlaylistMonitor(playlistsRepo);
+//		shortestPlaylistMonitor = new ShortestPlaylistMonitor(playlistsRepo);
+//		longestPlaylistMonitor = new LongestPlaylistMonitor(playlistsRepo);
 	}
 	
 	@Override

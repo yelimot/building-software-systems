@@ -6,12 +6,14 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionListener;
 
 import model.models.song.SongRepository;
-import view.components.*;
+import view.components.SongDetailPanel;
+import view.components.SongRepositoryListPanel;
+
 
 /**
  * This view shows song list at the left, song details at the right.
  * 
- * Behavior:
+ * Behaviour:
  * - When user selected song from the list, song details will show up on the right.
  *   User can like/dislike, remove like/dislike, comment.
  * 
@@ -19,12 +21,12 @@ import view.components.*;
  * 	- SongRepositoryListPanel
  *	- SongDetailPanel
  */
-public class Home extends JPanel {
+public class HomePanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	private SongRepositoryListPanel songList;
 	private SongDetailPanel songDetail;
 	
-	public Home(SongRepository model) {
+	public HomePanel(SongRepository model) {
         setSize(960, 685);
         setLayout(null);
         setVisible(true);
@@ -34,7 +36,7 @@ public class Home extends JPanel {
         add(songList);
     }
 	
-	public void setOutfitDetailPanel(SongDetailPanel songDetail) {
+	public void setSongDetailPanel(SongDetailPanel songDetail) {
 		if (this.songDetail != null) remove(this.songDetail);
 		
 		if (songDetail != null) {
@@ -54,5 +56,4 @@ public class Home extends JPanel {
 	public void addLikeButtonListener(ActionListener listener) {
 		songDetail.addLikeButtonListener(listener);
 	}
-	
 }

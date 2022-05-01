@@ -1,15 +1,15 @@
 package view.pages;
 
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionListener;
 
 import model.models.user.User;
 import view.components.FollowedUsersListPanel;
 import view.components.ListOfPlaylistsPanel;
-import view.components.AbstractSongListPanel;
-
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import view.components.SongListPanel;
 
 /**
  * Shows user's followed users, their collections and items in these collections.
@@ -26,16 +26,16 @@ import java.awt.event.ActionListener;
  * - CollectionListPanel
  * - SongListPanel
  */
-public class FollowedUsers extends JPanel {
+public class FollowedUsersPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	
 	private FollowedUsersListPanel userList;
 	private JButton followButton;
 	private ListOfPlaylistsPanel collectionList;
-	private AbstractSongListPanel<?,?> songList;
+	private SongListPanel<?,?> songList;
 	private JButton unfollowButton;
 	
-	public FollowedUsers(User model) {
+	public FollowedUsersPanel(User model) {
         setSize(960, 685);
         setLayout(null);
         setVisible(true);
@@ -87,7 +87,7 @@ public class FollowedUsers extends JPanel {
 		revalidate();		
 	}
 	
-	public void setSongListPanel(AbstractSongListPanel<?,?> songList) {
+	public void setSongListPanel(SongListPanel<?,?> songList) {
 		if (this.songList != null) remove(this.songList);
 		
 		if (songList != null) {

@@ -9,27 +9,27 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import model.enums.PlaylistEvent;
 import model.enums.UserEvent;
 import model.models.playlist.Playlist;
+import model.models.playlist.PlaylistEvent;
 import model.models.user.User;
 import model.utils.IRepository;
 import view.components.ListOfPlaylistsPanel;
-import view.components.SongListPanel;
-import view.pages.FollowedUsers;
+import view.components.PlaylistPanel;
+import view.pages.FollowedUsersPanel;
 
 public class FollowedUsersController implements IController {
-	private FollowedUsers view;
+	private FollowedUsersPanel view;
 	private User model;
 	private PlaylistListController playlistListController;
-	private final IRepository<User> userRepo;
+	private final IRepository<User> userRepository;
 	private Playlist selectedPlaylist;
-	private SongListPanel outfitListPanel;
+	private PlaylistPanel playlistPanel;
 	
-	public FollowedUsersController(FollowedUsers view, User model, IRepository<User> userRepo) {
+	public FollowedUsersController(FollowedUsersPanel view, User model, IRepository<User> userRepository) {
 		this.model = model;
 		this.view = view;
-		this.userRepo = userRepo;
+		this.userRepository = userRepository;
 		
 		this.view.addUserListSelectionListener(userListChangeListener);
 		this.view.addFollowButtonListener(followButtonActionListener);
@@ -75,19 +75,19 @@ public class FollowedUsersController implements IController {
     	public void valueChanged(ListSelectionEvent event) {
     		if (!event.getValueIsAdjusting()) {
     			if (selectedPlaylist != null) {
-        			selectedPlaylist.subscribe(PlaylistEvent.ADD_SONG, outfitListPanel);
-        			selectedPlaylist.subscribe(PlaylistEvent.REMOVE_SONG, outfitListPanel);
+        			selectedPlaylist.subscribe(PlaylistEvent.ADD_SONG, playlistPanel);
+        			selectedPlaylist.subscribe(PlaylistEvent.REMOVE_SONG, playlistPanel);
     			}
 
 				Playlist model = ((JList<Playlist>)event.getSource()).getSelectedValue();    		
 				
     			if (model != null) {
-    				outfitListPanel = new SongListPanel(model);
+    				playlistPanel = new PlaylistPanel(model);
     				
-    				model.subscribe(PlaylistEvent.ADD_SONG, outfitListPanel);
-    				model.subscribe(PlaylistEvent.REMOVE_SONG, outfitListPanel);
+    				model.subscribe(PlaylistEvent.ADD_SONG, playlistPanel);
+    				model.subscribe(PlaylistEvent.REMOVE_SONG, playlistPanel);
 
-    				view.setSongListPanel(outfitListPanel);
+    				view.setSongListPanel(playlistPanel);
     			} else {
     				view.setSongListPanel(null);
     			}
@@ -101,7 +101,7 @@ public class FollowedUsersController implements IController {
     	public void actionPerformed(ActionEvent arg0) {
     		List<User> followedUsers = model.getFollowedUsers();
     		
-    		List<User> possibilities = userRepo.getAll(u -> !followedUsers.contains(u));
+    		List<User> possibilities = userRepository.getAll(u -> !followedUsers.contains(u));
     		possibilities.remove(model);
     		
     		User result = (User) JOptionPane.showInputDialog(

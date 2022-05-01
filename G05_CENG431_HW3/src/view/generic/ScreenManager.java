@@ -7,18 +7,18 @@ import controller.FollowedUsersController;
 import controller.HomeController;
 import controller.IController;
 import controller.LoginController;
-import controller.PlaylistController;
+import controller.PlaylistsController;
 import data.IStatistics;
 import model.models.song.SongRepository;
 import model.models.user.User;
 import model.models.user.UserRepository;
 import view.components.HeaderPanel;
 import view.generic.contracts.IScreenManager;
-import view.pages.FollowedUsers;
-import view.pages.Home;
-import view.pages.Login;
+import view.pages.FollowedUsersPanel;
+import view.pages.HomePanel;
+import view.pages.LoginPanel;
 import view.pages.PlaylistsPanel;
-import view.pages.Statistics;
+import view.pages.StatisticsPanel;
 
 
 public class ScreenManager implements IScreenManager {
@@ -74,12 +74,12 @@ public class ScreenManager implements IScreenManager {
 	}
 	
 	private void showLoginScreen() {
-		window.setContent(new Login(new LoginController(this, userRepository)));
+		window.setContent(new LoginPanel(new LoginController(this, userRepository)));
 	}
 	
 	private void showHomeScreen() {
-		this.view = new Home(songRepository);
-		this.controller = new HomeController((Home) view, songRepository);
+		this.view = new HomePanel(songRepository);
+		this.controller = new HomeController((HomePanel) view, songRepository);
 		
 		window.setContent(view);
 	}
@@ -87,20 +87,20 @@ public class ScreenManager implements IScreenManager {
 	private void showCollectionsScreen() {
 		User model = Session.getUser();
 		this.view = new PlaylistsPanel(model);
-		this.controller = new PlaylistController((PlaylistsPanel) view, model);
+		this.controller = new PlaylistsController((PlaylistsPanel) view, model);
 		
 		window.setContent(view);
 	}
 	
 	private void showFollowedUsersScreen() {
 		User model = Session.getUser();
-		FollowedUsers view = new FollowedUsers(model);
+		FollowedUsersPanel view = new FollowedUsersPanel(model);
 		controller = new FollowedUsersController(view, model, userRepository);
 		window.setContent(view);
 	}
 	
 	private void showStatisticsScreen() {
 		IStatistics statistics = Session.getStatistics();
-		window.setContent(new Statistics(statistics));
+		window.setContent(new StatisticsPanel(statistics));
 	}
 }
