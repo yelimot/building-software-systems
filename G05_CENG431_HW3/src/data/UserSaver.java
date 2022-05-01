@@ -28,7 +28,7 @@ public class UserSaver implements IDataSaver<User> {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			Document doc = builder.newDocument();
-			Element root = doc.createElementNS("iztech:group6", "users");
+			Element root = doc.createElementNS("iztech:group5", "users");
 	        doc.appendChild(root);
 	        
 	        for(User user: data) {

@@ -12,18 +12,18 @@ import view.components.ListOfPlaylistsPanel;
 import view.components.SongListPanel;
 
 /**
- * Shows user's followed users, their collections and items in these collections.
+ * Shows user's followed users, their playlists and items in these playlists.
  * 
  * Behaviour:
  * - The user select followed user.
- * - The followed user's collections show up at center.
- * - The user selects collection.
- * - The songs of selected collection show up at right.
+ * - The followed user's playlists show up at center.
+ * - The user selects playlist.
+ * - The songs of selected playlist show up at right.
  * - The user follows/unfollows users from lower left.
  * 
  * Children:
  * - FollowedUsersListPanel
- * - CollectionListPanel
+ * - ListOfPlaylistsPanel
  * - SongListPanel
  */
 public class FollowedUsersPanel extends JPanel {
@@ -31,7 +31,7 @@ public class FollowedUsersPanel extends JPanel {
 	
 	private FollowedUsersListPanel userList;
 	private JButton followButton;
-	private ListOfPlaylistsPanel collectionList;
+	private ListOfPlaylistsPanel playlistList;
 	private SongListPanel<?,?> songList;
 	private JButton unfollowButton;
 	
@@ -58,8 +58,8 @@ public class FollowedUsersPanel extends JPanel {
 		return userList;
 	}
 	
-	public void addUserListSelectionListener(ListSelectionListener collectionChangeListener) {
-        userList.addListSelectionListener(collectionChangeListener);
+	public void addUserListSelectionListener(ListSelectionListener playlistChangeListener) {
+        userList.addListSelectionListener(playlistChangeListener);
 	}
 	
 	public void addFollowButtonListener(ActionListener followButtonActionListener) {
@@ -70,17 +70,17 @@ public class FollowedUsersPanel extends JPanel {
 		unfollowButton.addActionListener(unfollowButtonActionListener);
 	}
 	
-	public void addCollectionsListSelectionListener(ListSelectionListener collectionChangeListener) {
-		collectionList.addListSelectionListener(collectionChangeListener);
+	public void addPlaylistsListSelectionListener(ListSelectionListener playlistChangeListener) {
+		playlistList.addListSelectionListener(playlistChangeListener);
 	}
 
-	public void setCollectionListPanel(ListOfPlaylistsPanel collectionList) {
-		if (this.collectionList != null) remove(this.collectionList);
+	public void setPlaylistListPanel(ListOfPlaylistsPanel playlistList) {
+		if (this.playlistList != null) remove(this.playlistList);
 		
-		if (collectionList != null) {
-			this.collectionList = collectionList;
-			this.collectionList.setBounds(330, 20, 300, 540);;
-	        add(this.collectionList);
+		if (playlistList != null) {
+			this.playlistList = playlistList;
+			this.playlistList.setBounds(330, 20, 300, 540);;
+	        add(this.playlistList);
 		}
 
 		repaint();

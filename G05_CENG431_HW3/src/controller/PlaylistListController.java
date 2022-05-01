@@ -12,13 +12,13 @@ public class PlaylistListController implements IController {
 		this.model = model;
 		this.view = view;
 		
-		this.model.subscribe(UserEvent.ADD_COLLECTION, view);
-		this.model.subscribe(UserEvent.REMOVE_COLLECTION, view);
+		this.model.subscribe(UserEvent.ADD_PLAYLIST, view);
+		this.model.subscribe(UserEvent.REMOVE_PLAYLIST, view);
 	}
     
 	@Override
 	public void destroy() {
-		this.model.unsubscribe(UserEvent.ADD_COLLECTION, view);
-		this.model.unsubscribe(UserEvent.REMOVE_COLLECTION, view);
+		this.model.unsubscribe(UserEvent.ADD_PLAYLIST, view);
+		this.model.unsubscribe(UserEvent.REMOVE_PLAYLIST, view);
 	}
 }

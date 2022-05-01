@@ -19,15 +19,15 @@ public class UserMonitoredSaver implements IDataMonitoredSaver<User, UserEvent> 
 		userRepo.getAll().forEach(u -> {
 			subscribeToAllEvents(u);
 			
-			u.getCollections().forEach(this::subscribeToAllEvents);
+			u.getPlaylists().forEach(this::subscribeToAllEvents);
 		});
 	}
 
 	@Override
 	public void update(UserEvent event) {
 		switch (event) {
-			case ADD_COLLECTION:
-				event.getSubject().getCollections().forEach(this::subscribeToAllEvents);
+			case ADD_PLAYLIST:
+				event.getSubject().getPlaylists().forEach(this::subscribeToAllEvents);
 			default:
 				userRepo.save();
 				break;
@@ -39,10 +39,10 @@ public class UserMonitoredSaver implements IDataMonitoredSaver<User, UserEvent> 
 	}
 	
 	private void subscribeToAllEvents(Playlist playlist) {
-		Stream.of(PlaylistEvent.values()).forEach(e -> playlist.subscribe(e, userCollectionMonitoredSaver));
+		Stream.of(PlaylistEvent.values()).forEach(e -> playlist.subscribe(e, userPlaylistMonitoredSaver));
 	}
 	
-	private IDataMonitoredSaver<Playlist, PlaylistEvent> userCollectionMonitoredSaver = new IDataMonitoredSaver<>() {
+	private IDataMonitoredSaver<Playlist, PlaylistEvent> userPlaylistMonitoredSaver = new IDataMonitoredSaver<>() {
 		@Override
 		public void update(PlaylistEvent event) {
 			userRepo.save();

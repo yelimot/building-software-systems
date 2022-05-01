@@ -21,14 +21,14 @@ public class User extends AbstractObservable<User, UserEvent> {
 	private String password;
 	private Set<User> followedUsers;
 	private Set<User> followerUsers;
-	private SortedSet<Playlist> collections;
+	private SortedSet<Playlist> playlists;
 	
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
 		this.followedUsers = new HashSet<>();
 		this.followerUsers = new HashSet<>();
-		this.collections = new TreeSet<>();
+		this.playlists = new TreeSet<>();
 	}
 	
 	public String getUsername() {
@@ -39,8 +39,8 @@ public class User extends AbstractObservable<User, UserEvent> {
 		return this.password.equals(password);
 	}
 	
-	public List<Playlist> getCollections() {
-		return new ArrayList<>(collections);
+	public List<Playlist> getPlaylists() {
+		return new ArrayList<>(playlists);
 	}
 	
 	public List<User> getFollowedUsers() {
@@ -93,15 +93,15 @@ public class User extends AbstractObservable<User, UserEvent> {
 		return result;
 	}
 	
-	public boolean addCollection(Playlist collection) {
-		boolean result = collections.add(collection);
-		if (result) notifySubscribers(UserEvent.ADD_COLLECTION.withSubject(this));
+	public boolean addPlaylist(Playlist playlist) {
+		boolean result = playlists.add(playlist);
+		if (result) notifySubscribers(UserEvent.ADD_PLAYLIST.withSubject(this));
 		return result;
 	}
 	
-	public boolean removeCollection(Playlist collection) {
-		boolean result = collections.remove(collection);
-		if (result) notifySubscribers(UserEvent.REMOVE_COLLECTION.withSubject(this));
+	public boolean removePlaylist(Playlist playlist) {
+		boolean result = playlists.remove(playlist);
+		if (result) notifySubscribers(UserEvent.REMOVE_PLAYLIST.withSubject(this));
 		return result;
 	}
 
@@ -135,28 +135,28 @@ public class User extends AbstractObservable<User, UserEvent> {
 			followerUsersField.appendChild(followerUser);
 		}
 		
-		Node collectionsField = document.createElement("collections");
-		Node tempCollection, collectionName, songs, songId;
-		for(Playlist collection: collections) {
-			tempCollection = document.createElement("collection");
-			collectionName = document.createElement("name");
-			collectionName.appendChild(document.createTextNode(collection.getName()));
+		Node playlistsField = document.createElement("playlists");
+		Node tempPlaylist, playlistName, songs, songId;
+		for(Playlist playlist: playlists) {
+			tempPlaylist = document.createElement("playlist");
+			playlistName = document.createElement("name");
+			playlistName.appendChild(document.createTextNode(playlist.getName()));
 			songs = document.createElement("songs");
-			for(Song song: collection.getAll()) {
+			for(Song song: playlist.getAll()) {
 				songId = document.createElement("id");
 				songId.appendChild(document.createTextNode(String.valueOf(song.getId())));
 				songs.appendChild(songId);
 			}
-			tempCollection.appendChild(collectionName);
-			tempCollection.appendChild(songs);
-			collectionsField.appendChild(tempCollection);
+			tempPlaylist.appendChild(playlistName);
+			tempPlaylist.appendChild(songs);
+			playlistsField.appendChild(tempPlaylist);
 		}
 		
 		result.appendChild(usernameField);
 		result.appendChild(passwordField);
 		result.appendChild(followedUsersField);
 		result.appendChild(followerUsersField);
-		result.appendChild(collectionsField);
+		result.appendChild(playlistsField);
 
 		return result;
 	}

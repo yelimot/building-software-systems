@@ -39,7 +39,7 @@ public class SongDetailController implements IController {
     	public void actionPerformed(ActionEvent arg0) {
     		User user = Session.getUser();
     		
-    		Object[] possibilities = user.getCollections().toArray();
+    		Object[] possibilities = user.getPlaylists().toArray();
     		Playlist result = (Playlist) JOptionPane.showInputDialog(
                 view,
                 "Please Choose playlist to add",

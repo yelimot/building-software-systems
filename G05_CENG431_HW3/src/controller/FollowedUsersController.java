@@ -61,10 +61,10 @@ public class FollowedUsersController implements IController {
     				ListOfPlaylistsPanel collectionList = new ListOfPlaylistsPanel(model);
     				playlistListController = new PlaylistListController(collectionList, model);
 
-        			view.setCollectionListPanel(collectionList);
-        			view.addCollectionsListSelectionListener(collectionChangeListener);
+        			view.setPlaylistListPanel(collectionList);
+        			view.addPlaylistsListSelectionListener(collectionChangeListener);
     			} else {
-        			view.setCollectionListPanel(null);
+        			view.setPlaylistListPanel(null);
     			}
     		}
     	}

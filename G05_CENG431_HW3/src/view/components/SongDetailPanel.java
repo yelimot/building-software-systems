@@ -35,72 +35,53 @@ public class SongDetailPanel extends JPanel implements IObserver<Song, SongEvent
 	private JLabel durationLabel;
 	private JLabel popularityLabel;
 	private JLabel likeCountLabel;
-	private JButton sendButton;
+	private JLabel popularityCountLabel;
 	private JButton likeButton; 
 	private JButton addCollectionButton;
 	private JButton playButton;
-	private JList<Object> comments;
 	
 	public SongDetailPanel(JPanel parent, Song model) {
 		this.model = model;
         setSize(420, 685);
         setLayout(null);
         setVisible(true);
-                        
-        JScrollPane commentsScroller = new JScrollPane();
-        commentsScroller.setBounds(0, 150, 420, 350);
-        add(commentsScroller);
-        commentsScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        commentsScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        comments.setFont(new Font("Dialog", Font.PLAIN, 12));
-        comments.setFixedCellHeight(20);
-        commentsScroller.setViewportView(comments);
-        comments.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        comments.setVisibleRowCount(-1);
         
-        genreIdLabel = new JLabel("Id: " + model.getGenre().toString());
-        genreIdLabel.setBounds(0, 0, 129, 15);
+        genreIdLabel = new JLabel("Genre: " + model.getGenre().toString());
+        genreIdLabel.setBounds(0, 50, 129, 15);
         add(genreIdLabel);
         
         trackIdLabel = new JLabel("Id: " + model.getId());
-        trackIdLabel.setBounds(0, 0, 129, 15);
+        trackIdLabel.setBounds(0, 65, 129, 15);
         add(trackIdLabel);
         
         songNameLabel = new JLabel("Name: " + model.getSongName());
-        songNameLabel.setBounds(0, 30, 157, 15);
+        songNameLabel.setBounds(0, 80, 157, 15);
         add(songNameLabel);
         
-        artistNameLabel = new JLabel("Brand: " + model.getArtistName());
-        artistNameLabel.setBounds(160, 30, 129, 15);
+        artistNameLabel = new JLabel("Artist: " + model.getArtistName());
+        artistNameLabel.setBounds(160, 80, 129, 15);
         add(artistNameLabel);
         
-        durationLabel = new JLabel("Type: " + model.getDuration());
-        durationLabel.setBounds(160, 57, 164, 15);
+        durationLabel = new JLabel("Duration: " + model.getDuration());
+        durationLabel.setBounds(160, 107, 164, 15);
         add(durationLabel);;
         
         likeCountLabel = new JLabel("Likes: " + model.getLikeCount());
         likeCountLabel.setBounds(0, 125, 129, 15);
         add(likeCountLabel);
         
-        popularityLabel = new JLabel("Dislikes: " + model.getPopularity());
+        popularityLabel = new JLabel("Popularity: " + model.getPopularity());
         popularityLabel.setBounds(160, 123, 129, 15);
         add(popularityLabel);
-        
-        sendButton = new JButton("Send");
-        sendButton.setBounds(310, 602, 110, 25);
-        add(sendButton);
         
         likeButton = new JButton("Like");
         likeButton.setBounds(0, 510, 110, 25);
         add(likeButton);
                 
-        addCollectionButton = new JButton("Add Collection");        
+        addCollectionButton = new JButton("Add to Playlist");        
         addCollectionButton.setBounds(270, 510, 150, 25);
         add(addCollectionButton);
-        
-        playButton = new JButton("Dislike");
-        playButton.setBounds(135, 510, 110, 25);
-        add(playButton);        
+           
 	}
 	
 	public void addAddToPlaylistButtonListener(ActionListener listener) {
@@ -115,10 +96,6 @@ public class SongDetailPanel extends JPanel implements IObserver<Song, SongEvent
 		playButton.addActionListener(listener);
 	}
 	
-	public void addSendButtonListener(ActionListener listener) {
-		sendButton.addActionListener(listener);
-	}
-	
 
 	@Override
 	public void update(SongEvent event) {
@@ -129,6 +106,7 @@ public class SongDetailPanel extends JPanel implements IObserver<Song, SongEvent
 				break;
 			case PLAY:
 				// To-Do: play iþlemini yaptýrmak
+				popularityCountLabel.setText("Popularity: " + model.getPopularity());
 				break;
 			default:
 				break;

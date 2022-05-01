@@ -15,7 +15,7 @@ import view.components.SongRepositoryListPanel;
  * 
  * Behaviour:
  * - When user selected song from the list, song details will show up on the right.
- *   User can like/dislike, remove like/dislike, comment.
+ *   User can like, remove like.
  * 
  * Children:
  * 	- SongRepositoryListPanel
@@ -49,8 +49,8 @@ public class HomePanel extends JPanel {
 		revalidate();
 	}
 	
-	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
-        songList.addListSelectionListener(collectionChangeListener);
+	public void addListSelectionListener(ListSelectionListener playlistChangeListener) {
+        songList.addListSelectionListener(playlistChangeListener);
 	}
 
 	public void addLikeButtonListener(ActionListener listener) {

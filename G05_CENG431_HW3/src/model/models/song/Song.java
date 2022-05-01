@@ -98,7 +98,7 @@ public class Song extends AbstractObservable<Song, SongEvent> implements Compara
 	
 	@Override
 	public String toString() {
-		return String.format("<html>%s by <i>%s</i> (#%d)</html>", songName, artistName, id);
+		return String.format("%d,%d,%s,%s,%d,%d,%d", Genre.fromGenre(genre), id, songName, artistName, duration, popularity, numberOfLikes );
 	}
 
 	@Override

@@ -8,8 +8,8 @@ public enum UserEvent implements IEvent<User> {
 	UNFOLLOW,
 	FOLLOWED,
 	UNFOLLOWED,
-	ADD_COLLECTION,
-	REMOVE_COLLECTION,;
+	ADD_PLAYLIST,
+	REMOVE_PLAYLIST,;
 	
 	private User subject;
 	

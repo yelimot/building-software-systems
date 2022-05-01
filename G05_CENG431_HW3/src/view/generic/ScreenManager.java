@@ -59,8 +59,8 @@ public class ScreenManager implements IScreenManager {
 			case HOME:
 				showHomeScreen();
 				break;
-			case COLLECTIONS:
-				showCollectionsScreen();
+			case PLAYLISTS:
+				showPlaylistsScreen();
 				break;
 			case FOLLOWED_USERS:
 				showFollowedUsersScreen();
@@ -84,7 +84,7 @@ public class ScreenManager implements IScreenManager {
 		window.setContent(view);
 	}
 	
-	private void showCollectionsScreen() {
+	private void showPlaylistsScreen() {
 		User model = Session.getUser();
 		this.view = new PlaylistsPanel(model);
 		this.controller = new PlaylistsController((PlaylistsPanel) view, model);

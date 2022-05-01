@@ -12,26 +12,26 @@ import view.components.ListOfPlaylistsPanel;
 import view.components.PlaylistPanel;
 
 /**
- * Shows current user's collections and its content.
+ * Shows current user's playlists and its content.
  * 
  * Behaviour:
- * - Users selects collection from left.
+ * - Users selects playlist from left.
  * - Song list shows up at right.
  * - User removes song by selecting it and clicking remove button.
- * - User creates collection by writing its name to input in lower 
+ * - User creates playlist by writing its name to input in lower 
  * 	left and clicking Create button.
  * 
  * Children:
- * - CollectionListPanel
- * - PlaylistListPanel
+ * - ListOfPlaylistsPanel
+ * - PlaylistPanel
  */
 public class PlaylistsPanel extends JPanel {
 	private static final long serialVersionUID = -669290185768399715L;
 	
-	private JTextField collectionNameField;
-	private ListOfPlaylistsPanel collectionsList;
+	private JTextField playlistNameField;
+	private ListOfPlaylistsPanel playlistsList;
 	private PlaylistPanel playlist;
-	private JButton createCollectionButton;
+	private JButton createPlaylistButton;
 	private JButton removeItemButton;
 
 	public PlaylistsPanel(User model) {
@@ -39,30 +39,30 @@ public class PlaylistsPanel extends JPanel {
         setLayout(null);
         setVisible(true);
         
-        collectionsList = new ListOfPlaylistsPanel(model);
-        collectionsList.setBounds(20, 20, 420, 540);
-        add(collectionsList);
+        playlistsList = new ListOfPlaylistsPanel(model);
+        playlistsList.setBounds(20, 20, 420, 540);
+        add(playlistsList);
 		
-        collectionNameField = new JTextField();
-        collectionNameField.setBounds(20, 570, 300, 30);
-        collectionNameField.setColumns(10);
-        add(collectionNameField);
+        playlistNameField = new JTextField();
+        playlistNameField.setBounds(20, 570, 300, 30);
+        playlistNameField.setColumns(10);
+        add(playlistNameField);
 		
-        createCollectionButton = new JButton("Create");
-        createCollectionButton.setBounds(215, 610, 105, 25);
-        add(createCollectionButton);
+        createPlaylistButton = new JButton("Create");
+        createPlaylistButton.setBounds(215, 610, 105, 25);
+        add(createPlaylistButton);
               
-        removeItemButton = new JButton("Remove Item From Collection");
+        removeItemButton = new JButton("Remove Item From Playlist");
         removeItemButton.setBounds(560, 580, 300, 30);
         add(removeItemButton);
 	}
 	
-	public ListOfPlaylistsPanel getCollectionListPanel() {
-		return collectionsList;
+	public ListOfPlaylistsPanel getPlaylistListPanel() {
+		return playlistsList;
 	}
 	
 	public String getNewPlaylistName() {
-		return collectionNameField.getText();
+		return playlistNameField.getText();
 	}
 
 	public void setSongListPanel(PlaylistPanel playlist) {
@@ -82,12 +82,12 @@ public class PlaylistsPanel extends JPanel {
 		removeItemButton.setVisible(visible);
 	}
 	
-	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
-		collectionsList.addListSelectionListener(collectionChangeListener);
+	public void addListSelectionListener(ListSelectionListener playlistChangeListener) {
+		playlistsList.addListSelectionListener(playlistChangeListener);
 	}
 	
 	public void addCreateButtonListener(ActionListener createButtonListener) {
-		createCollectionButton.addActionListener(createButtonListener);
+		createPlaylistButton.addActionListener(createButtonListener);
 	}
 	
 	public void addRemoveItemButtonListener(ActionListener removeItemButtonListener) {

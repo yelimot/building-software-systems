@@ -22,6 +22,7 @@ public class StatisticsPanel extends JPanel {
 	public StatisticsPanel(IStatistics model) {
 		User mostFollowed = model.getMostFollowedUser();
 		Song mostLiked = model.getMostLikedSong();
+		Song mostPopular = model.getMostPopularSong();
 		
         setSize(960, 685);
         setLayout(null);
@@ -33,12 +34,12 @@ public class StatisticsPanel extends JPanel {
         mostLikedLabel.setBounds(0, 112, 960, 45);
         add(mostLikedLabel);
         
-        JLabel mostDislikedLabel = new JLabel("The Most Disliked Song:");
-        mostDislikedLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-        mostDislikedLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        mostDislikedLabel.setFont(new Font("Dialog", Font.BOLD, 24));
-        mostDislikedLabel.setBounds(0, 245, 960, 45);
-        add(mostDislikedLabel);
+        JLabel mostPopularLabel = new JLabel("The Most Popular Song:");
+        mostPopularLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+        mostPopularLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mostPopularLabel.setFont(new Font("Dialog", Font.BOLD, 24));
+        mostPopularLabel.setBounds(0, 245, 960, 45);
+        add(mostPopularLabel);
         
         JLabel mostFollowedUserLabel = new JLabel("The Most Followed User:");
         mostFollowedUserLabel.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -53,6 +54,13 @@ public class StatisticsPanel extends JPanel {
         mostLikedLabel_1.setFont(new Font("Dialog", Font.PLAIN, 24));
         mostLikedLabel_1.setBounds(0, 156, 960, 45);
         add(mostLikedLabel_1);
+        
+        JLabel mostPopularLabel_1 = new JLabel(mostPopular.toString());
+        mostPopularLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);
+        mostPopularLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+        mostPopularLabel_1.setFont(new Font("Dialog", Font.PLAIN, 24));
+        mostPopularLabel_1.setBounds(0, 290, 960, 45);
+        add(mostPopularLabel_1);
                 
         JLabel mostFollowedUserLabel_1 = new JLabel(mostFollowed.toString());
         mostFollowedUserLabel_1.setVerticalAlignment(SwingConstants.BOTTOM);

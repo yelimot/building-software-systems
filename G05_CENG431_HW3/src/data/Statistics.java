@@ -19,8 +19,7 @@ public class Statistics implements IStatistics {
 	private IMonitor<Playlist, PlaylistEvent> shortestPlaylistMonitor;
 	private IMonitor<Playlist, PlaylistEvent> longestPlaylistMonitor;
 	
-	public Statistics(IRepository<User> usersRepo, IRepository<Song> songsRepo, 
-			IRepository<Playlist> playlistsRepo) {
+	public Statistics(IRepository<User> usersRepo, IRepository<Song> songsRepo) {
 		mostLikedSongMonitor = new MostLikedSongMonitor(songsRepo);
 		mostFollowedUserMonitor = new MostFollowedUserMonitor(usersRepo);
 		mostPopularSongMonitor = new MostPopularSongMonitor(songsRepo);
@@ -42,7 +41,7 @@ public class Statistics implements IStatistics {
 	@Override
 	public Song getMostPopularSong() {
 		// TODO Auto-generated method stub
-		return null;
+		return mostPopularSongMonitor.get();
 	}
 
 	@Override

@@ -37,6 +37,6 @@ public class MostLikedSongMonitor implements IMonitor<Song, SongEvent> {
 	}
 	
 	private boolean hasMoreLike(Song song) {
-		return mostLiked == null || song.getLikeCount() > mostLiked.getLikeCount();
+		return mostLiked == null || song.getNumberOfLikes() > mostLiked.getNumberOfLikes();
 	}
 }

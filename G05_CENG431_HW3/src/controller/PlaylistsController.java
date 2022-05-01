@@ -27,7 +27,7 @@ public class PlaylistsController implements IController {
 		this.model = model;
 		this.view = view;
 		
-		this.playlistListController = new PlaylistListController(view.getCollectionListPanel(), model);
+		this.playlistListController = new PlaylistListController(view.getPlaylistListPanel(), model);
 		
 		this.view.addListSelectionListener(collectionChangeListener);
 		this.view.addRemoveItemButtonListener(removeItemButtonListener);
@@ -39,7 +39,7 @@ public class PlaylistsController implements IController {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			String name = view.getNewPlaylistName();
-			if (StringUtils.isValid(name)) model.addCollection(new Playlist(name));
+			if (StringUtils.isValid(name)) model.addPlaylist(new Playlist(name));
 		}
 	};
 	

@@ -20,7 +20,7 @@ import model.utils.IObserver;
 public class ListOfPlaylistsPanel extends JPanel implements IObserver<User, UserEvent> {
 	private static final long serialVersionUID = -669293105768399715L;
 	private JScrollPane usersScroller;
-	private JList<Object> collections;
+	private JList<Object> playlists;
 	private User model;
 	
 	public ListOfPlaylistsPanel(User model) {
@@ -36,31 +36,31 @@ public class ListOfPlaylistsPanel extends JPanel implements IObserver<User, User
         usersScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(usersScroller);
 
-        collections = new JList<Object>(model.getCollections().toArray());
-        collections.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        collections.setVisibleRowCount(-1);
+        playlists = new JList<Object>(model.getPlaylists().toArray());
+        playlists.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        playlists.setVisibleRowCount(-1);
         
-        usersScroller.setViewportView(collections);
+        usersScroller.setViewportView(playlists);
         
-        JLabel usersTitle = new JLabel("Collections");
+        JLabel usersTitle = new JLabel("Playlists");
         usersTitle.setFont(new Font("Dialog", Font.BOLD, 18));
         usersTitle.setBounds(0, 0, 140, 15);
         add(usersTitle);
 
 	}
 	
-	public void addListSelectionListener(ListSelectionListener collectionChangeListener) {
-        collections.addListSelectionListener(collectionChangeListener);
-        collections.setSelectedIndex(0);
+	public void addListSelectionListener(ListSelectionListener playlistChangeListener) {
+		playlists.addListSelectionListener(playlistChangeListener);
+		playlists.setSelectedIndex(0);
 	}
 	
 	@Override
 	public void update(UserEvent event) {
 		switch (event) {
-			case ADD_COLLECTION:
-			case REMOVE_COLLECTION:
-				collections.removeAll();
-				collections.setListData(model.getCollections().toArray());
+			case ADD_PLAYLIST:
+			case REMOVE_PLAYLIST:
+				playlists.removeAll();
+				playlists.setListData(model.getPlaylists().toArray());
 			default:
 				break;
 		}		
