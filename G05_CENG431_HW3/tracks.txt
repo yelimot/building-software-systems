@@ -11,10 +11,10 @@
 1,1010,Photograph,Ed Sheeran,339,384120,5566
 1,1011,Tears in Heaven,Eric Clapton,247,380255,789
 1,1012,No Rain,Blind Melon,190,1155929,12367
-1,1013,Take It Easy,The Eagles,228,1216926,90876
+1,1013,Take It Easy,The Eagles,228,1216941,90876
 2,2000,Moovin’ ‘N’ Groovin,Duane Eddy,333,1969717,23000
 2,2001,Rumble,Link Wray,332,1011130,7845
-2,2002,Walk Don’t Run,The Ventures,350,633614,10982
+2,2002,Walk Don’t Run,The Ventures,350,633618,10982
 2,2003,Let’s Go Trippin,Dick Dale,243,569195,9876
 2,2004,Green Onions,Booker T. & the MG’s,344,1642647,3457
 2,2005,Telstar,The Tornados,356,1625100,96785

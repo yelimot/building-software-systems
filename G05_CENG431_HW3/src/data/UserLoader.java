@@ -52,11 +52,11 @@ public class UserLoader implements IDataLoader<User> {
 
 				User tempUser = new User(username, password);
 
-				NodeList playlistList = eElement.getElementsByTagName("playlists");
+				NodeList playlistList = eElement.getElementsByTagName("playlist");
 
 				Element firstElement = (Element) playlistList.item(0);
 				
-				if (firstElement.hasChildNodes()) {
+				if (firstElement != null && firstElement.hasChildNodes()) {
 					for (int j = 0; j < playlistList.getLength(); ++j) {
 						Node playlistNode = playlistList.item(j);
 						Element pElement = (Element) playlistNode;

@@ -1,81 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <users xmlns="iztech:group5">
   <user>
-    <username>alp</username>
-    <password>123456</password>
+    <username>yasar</username>
+    <password>112233</password>
     <followedUsers>
-      <id>johannes</id>
-      <id>huseyin</id>
-      <id>akdeniz</id>
+      <id>dilek</id>
+      <id>tugkan</id>
+      <id>onur</id>
     </followedUsers>
     <followerUsers>
-      <id>johannes</id>
-      <id>tennant</id>
-      <id>huseyin</id>
-      <id>akdeniz</id>
+      <id>dilek</id>
+      <id>serhat</id>
+      <id>tugkan</id>
+      <id>onur</id>
+    </followerUsers>
+  </user>
+  <user>
+    <username>onur</username>
+    <password>112233</password>
+    <followedUsers>
+      <id>yasar</id>
+      <id>dilek</id>
+      <id>tugkan</id>
+    </followedUsers>
+    <followerUsers>
+      <id>yasar</id>
+      <id>dilek</id>
+      <id>serhat</id>
+      <id>tugkan</id>
     </followerUsers>
     <playlists/>
   </user>
   <user>
-    <username>akdeniz</username>
-    <password>123456</password>
+    <username>dilek</username>
+    <password>112233</password>
     <followedUsers>
-      <id>alp</id>
-      <id>tennant</id>
-      <id>huseyin</id>
+      <id>yasar</id>
+      <id>serhat</id>
+      <id>tugkan</id>
+      <id>onur</id>
     </followedUsers>
     <followerUsers>
-      <id>johannes</id>
-      <id>alp</id>
-      <id>tennant</id>
-      <id>huseyin</id>
+      <id>yasar</id>
+      <id>tugkan</id>
+      <id>onur</id>
     </followerUsers>
     <playlists/>
   </user>
   <user>
-    <username>johannes</username>
-    <password>123456</password>
+    <username>tugkan</username>
+    <password>112233</password>
     <followedUsers>
-      <id>alp</id>
-      <id>tennant</id>
-      <id>huseyin</id>
-      <id>akdeniz</id>
+      <id>yasar</id>
+      <id>dilek</id>
+      <id>onur</id>
     </followedUsers>
     <followerUsers>
-      <id>alp</id>
-      <id>tennant</id>
+      <id>yasar</id>
+      <id>dilek</id>
+      <id>serhat</id>
+      <id>onur</id>
     </followerUsers>
     <playlists/>
   </user>
   <user>
-    <username>huseyin</username>
-    <password>123456</password>
+    <username>serhat</username>
+    <password>112233</password>
     <followedUsers>
-      <id>alp</id>
-      <id>tennant</id>
-      <id>akdeniz</id>
+      <id>yasar</id>
+      <id>tugkan</id>
+      <id>onur</id>
     </followedUsers>
     <followerUsers>
-      <id>johannes</id>
-      <id>alp</id>
-      <id>tennant</id>
-      <id>akdeniz</id>
-    </followerUsers>
-    <playlists/>
-  </user>
-  <user>
-    <username>tennant</username>
-    <password>123456</password>
-    <followedUsers>
-      <id>johannes</id>
-      <id>alp</id>
-      <id>huseyin</id>
-      <id>akdeniz</id>
-    </followedUsers>
-    <followerUsers>
-      <id>johannes</id>
-      <id>huseyin</id>
-      <id>akdeniz</id>
+      <id>dilek</id>
     </followerUsers>
     <playlists/>
   </user>

@@ -26,6 +26,7 @@ public class SongDetailController implements IController {
 		
 		view.addLikeButtonListener(likeButtonListener);
 		view.addAddToPlaylistButtonListener(addPlaylistButtonListener);
+		view.addPlayButtonListener(playButtonListener);
 	}
 	
 	private ActionListener likeButtonListener = new ActionListener() {
@@ -34,6 +35,12 @@ public class SongDetailController implements IController {
     		if (!succeed) model.removeLike(Session.getUser());
     	}
     };
+
+	private ActionListener playButtonListener = new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			model.playSong(model.getId());		
+		}
+	};
     
     private ActionListener addPlaylistButtonListener = new ActionListener() {
     	public void actionPerformed(ActionEvent arg0) {

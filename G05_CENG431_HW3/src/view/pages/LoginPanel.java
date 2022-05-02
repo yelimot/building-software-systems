@@ -50,7 +50,7 @@ public class LoginPanel extends JPanel {
 		passwordLabel.setBounds(334, 204, 77, 15);
 		add(passwordLabel);
 		
-		passwordInput = new JPasswordField("123456");
+		passwordInput = new JPasswordField("112233");
 		passwordInput.setBounds(439, 202, 212, 19);
 		add(passwordInput);
 		passwordInput.setColumns(10);
@@ -68,7 +68,7 @@ public class LoginPanel extends JPanel {
 		
 		ezUsernames1 = new JTextField();
 		ezUsernames1.setToolTipText("Click for set username input");
-		ezUsernames1.setText("alp");
+		ezUsernames1.setText("yasar");
 		ezUsernames1.setEditable(false);
 		ezUsernames1.setBounds(158, 348, 114, 19);
 		add(ezUsernames1);
@@ -76,7 +76,7 @@ public class LoginPanel extends JPanel {
 		
 		ezUsernames2 = new JTextField();
 		ezUsernames2.setToolTipText("Click for set username input");
-		ezUsernames2.setText("akdeniz");
+		ezUsernames2.setText("onur");
 		ezUsernames2.setEditable(false);
 		ezUsernames2.setColumns(10);
 		ezUsernames2.setBounds(284, 348, 114, 19);
@@ -84,7 +84,7 @@ public class LoginPanel extends JPanel {
 		
 		ezUsernames3 = new JTextField();
 		ezUsernames3.setToolTipText("Click for set username input");
-		ezUsernames3.setText("johannes");
+		ezUsernames3.setText("dilek");
 		ezUsernames3.setEditable(false);
 		ezUsernames3.setColumns(10);
 		ezUsernames3.setBounds(410, 348, 114, 19);
@@ -92,7 +92,7 @@ public class LoginPanel extends JPanel {
 		
 		ezUsernames4 = new JTextField();
 		ezUsernames4.setToolTipText("Click for set username input");
-		ezUsernames4.setText("huseyin");
+		ezUsernames4.setText("tugkan");
 		ezUsernames4.setEditable(false);
 		ezUsernames4.setColumns(10);
 		ezUsernames4.setBounds(537, 348, 114, 19);
@@ -100,7 +100,7 @@ public class LoginPanel extends JPanel {
 		
 		ezUsernames5 = new JTextField();
 		ezUsernames5.setToolTipText("Click for set username input");
-		ezUsernames5.setText("tennant");
+		ezUsernames5.setText("serhat");
 		ezUsernames5.setEditable(false);
 		ezUsernames5.setColumns(10);
 		ezUsernames5.setBounds(663, 348, 114, 19);
@@ -116,7 +116,7 @@ public class LoginPanel extends JPanel {
 		
 		ezPassword = new JTextField();
 		ezPassword.setToolTipText("Click for set username password");
-		ezPassword.setText("123456");
+		ezPassword.setText("112233");
 		ezPassword.setEditable(false);
 		ezPassword.setColumns(10);
 		ezPassword.setBounds(158, 406, 114, 19);

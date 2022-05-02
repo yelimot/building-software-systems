@@ -14,7 +14,7 @@ public class Song extends AbstractObservable<Song, SongEvent> implements Compara
 	private final String songName;
 	private final String artistName;
 	private final int duration;
-	private final int popularity;
+	private int popularity;
 	private final int numberOfLikes;
 	private final Set<String> likedUserIds;
 	
@@ -90,10 +90,9 @@ public class Song extends AbstractObservable<Song, SongEvent> implements Compara
 		return result;
 	}
 	
-	// TODO
-	public boolean playSong(int songId) {
-		// To-Do playSong
-		return false;
+	public void playSong(int songId) {
+		this.popularity += 1;
+		notifySubscribers(SongEvent.PLAY.withSubject(this));
 	}
 	
 	@Override

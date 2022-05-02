@@ -15,7 +15,7 @@ import model.models.user.User;
 import model.utils.IObserver;
 
 /**
- * Shoes all collections of user.
+ * Shows all playlists of user.
  */
 public class ListOfPlaylistsPanel extends JPanel implements IObserver<User, UserEvent> {
 	private static final long serialVersionUID = -669293105768399715L;

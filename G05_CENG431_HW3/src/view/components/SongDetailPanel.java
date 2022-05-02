@@ -35,7 +35,6 @@ public class SongDetailPanel extends JPanel implements IObserver<Song, SongEvent
 	private JLabel durationLabel;
 	private JLabel popularityLabel;
 	private JLabel likeCountLabel;
-	private JLabel popularityCountLabel;
 	private JButton likeButton; 
 	private JButton addCollectionButton;
 	private JButton playButton;
@@ -77,6 +76,10 @@ public class SongDetailPanel extends JPanel implements IObserver<Song, SongEvent
         likeButton = new JButton("Like");
         likeButton.setBounds(0, 510, 110, 25);
         add(likeButton);
+        
+        playButton = new JButton("Play");
+        playButton.setBounds(135, 510, 110, 25);
+        add(playButton);
                 
         addCollectionButton = new JButton("Add to Playlist");        
         addCollectionButton.setBounds(270, 510, 150, 25);
@@ -105,8 +108,7 @@ public class SongDetailPanel extends JPanel implements IObserver<Song, SongEvent
 				likeCountLabel.setText("Likes: " + model.getLikeCount());
 				break;
 			case PLAY:
-				// To-Do: play iþlemini yaptýrmak
-				popularityCountLabel.setText("Popularity: " + model.getPopularity());
+				popularityLabel.setText("Popularity: " + model.getPopularity());
 				break;
 			default:
 				break;
