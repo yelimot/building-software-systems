@@ -1,19 +1,10 @@
 package view.components;
 
-import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
 
 import model.enums.SongEvent;
 import model.models.song.Song;
