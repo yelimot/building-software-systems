@@ -21,9 +21,7 @@ import PizzaGlobale.PizzaGlobaleToppings.SweetCornPGTopping;
 
 public class PizzaGlobaleFactory extends AbstractPizzaFactory {
 
-	@Override
 	protected AbstractPizza createPizza(int type) {
-		// TODO Auto-generated method stub
 		switch(type) {
 			case 1:
 				return new GoatCheesePGPizza();
@@ -41,9 +39,7 @@ public class PizzaGlobaleFactory extends AbstractPizzaFactory {
 		return null;
 	}
 	
-	@Override
 	protected AbstractPizza createTopping(int type, AbstractPizza orderedPizza) {
-		// TODO Auto-generated method stub
 		switch(type) {
 			case 1:
 				return new ParmesanCheesePGTopping(orderedPizza);
