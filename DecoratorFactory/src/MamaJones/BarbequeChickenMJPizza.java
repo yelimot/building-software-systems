@@ -5,7 +5,7 @@ import Generic.AbstractPizza;
 public class BarbequeChickenMJPizza extends AbstractPizza {
     
     public BarbequeChickenMJPizza() { 
-        description = "Goat Cheese Pizza Globale"; 
+        description = "Barbeque Chicken Pizza"; 
     }
    
     public int getCost() {  return 68; }

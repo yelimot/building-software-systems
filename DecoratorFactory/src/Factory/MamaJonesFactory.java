@@ -45,17 +45,17 @@ public class MamaJonesFactory extends AbstractPizzaFactory {
 				return new OliveMJTopping(orderedPizza);
 			case 3:
 				return new RicottaCheeseMJTopping(orderedPizza);
-			case 5:
+			case 4:
 				return new SausageMJTopping(orderedPizza);
-			case 7:
+			case 5:
 				return new PepperoniMJTopping(orderedPizza);
-			case 8:
+			case 6:
 				return new SalamiMJTopping(orderedPizza);
-			case 9:
+			case 7:
 				return new BasilLeavesMJTopping(orderedPizza);
-			case 10:
+			case 8:
 				return new CherryTomatoMJTopping(orderedPizza);
-			case 11:
+			case 9:
 				return new JalapenoMJTopping(orderedPizza);
 			default:
 				break;
