@@ -4,7 +4,7 @@ The critical design tool for software development is a mind well educated in des
 
 This is the repository that contains the solutions of the assignments from the 'Building Software Systems' course.
 
-# TOPICS
+# Topics
 
 - Object oriented software development 
 - Object oriented analysis and design with UML 
